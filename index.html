@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALBUM 2026 EGOLATRAS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    color: white;
+}
+
+/* LOGIN */
+#loginScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    text-align: center;
+}
+
+#loginScreen input {
+    padding: 10px 15px;
+    font-size: 1rem;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+}
+
+#loginScreen button {
+    padding: 10px 20px;
+    background: #ff4b2b;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#loginScreen button:hover {
+    background: #ff1e00;
+    transform: scale(1.05);
+}
+
+#content {
+    display: none; /* contenido oculto hasta login */
+}
+
+/* HEADER Y GALERÍA */
+header {
+    text-align: center;
+    padding: 60px 20px 30px;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    margin: 0;
+    letter-spacing: 4px;
+}
+
+header p {
+    opacity: 0.7;
+    margin-top: 10px;
+}
+
+.botones {
+    margin-top: 30px;
+}
+
+.boton {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 25px;
+    background: #ff4b2b;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.boton:hover {
+    background: #ff1e00;
+    transform: scale(1.08);
+}
+
+.galeria {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding-bottom: 60px;
+}
+
+.foto {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.foto img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.foto:hover img {
+    transform: scale(1.1);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+    <h1>Bienvenido a ALBUM 2026 EGOLATRAS</h1>
+    <p>Ingresa la contraseña para acceder</p>
+    <input type="password" id="passwordInput" placeholder="Contraseña">
+    <button onclick="checkPassword()">Entrar</button>
+</div>
+
+<!-- CONTENIDO PRINCIPAL -->
+<div id="content">
+<header>
+    <h1>ALBUM 2026 EGOLATRAS</h1>
+    <p>Donde el ego se convierte en arte.</p>
+
+    <div class="botones">
+        <a href="deportivas.html" class="boton">Fotos de las Deportivas</a>
+        <a href="stikers.html" class="boton">Stikers</a>
+    </div>
+</header>
+
+<section class="galeria">
+    <div class="foto"><img src="imagenes/foto1.jpg"></div>
+    <div class="foto"><img src="imagenes/foto2.jpg"></div>
+    <div class="foto"><img src="imagenes/foto3.jpg"></div>
+    <div class="foto"><img src="imagenes/foto4.jpg"></div>
+    <div class="foto"><img src="imagenes/foto5.jpg"></div>
+    <div class="foto"><img src="imagenes/foto6.jpg"></div>
+    <div class="foto"><img src="imagenes/foto7.jpg"></div>
+    <div class="foto"><img src="imagenes/foto8.jpg"></div>
+    <div class="foto"><img src="imagenes/foto9.jpg"></div>
+    <div class="foto"><img src="imagenes/foto10.jpg"></div>
+    <div class="foto"><img src="imagenes/foto11.jpg"></div>
+    <div class="foto"><img src="imagenes/foto12.jpg"></div>
+    <div class="foto"><img src="imagenes/foto13.jpg"></div>
+    <div class="foto"><img src="imagenes/foto14.jpg"></div>
+    <div class="foto"><img src="imagenes/foto15.jpg"></div>
+    <div class="foto"><img src="imagenes/foto16.jpg"></div>
+</section>
+
+<footer>
+    © 2026 Ególatras | Todos los derechos reservados
+</footer>
+</div>
+
+<script>
+(function() {
+    const passwordCorrecta = "EgoLaTrAs123"; // contraseña nueva más segura
+    const loginScreen = document.getElementById("loginScreen");
+    const content = document.getElementById("content");
+    const passwordInput = document.getElementById("passwordInput");
+
+    // Bloquear la carga automática del contenido hasta ingresar contraseña
+    function showContent() {
+        loginScreen.style.display = "none";
+        content.style.display = "block";
+    }
+
+    // Función de validación
+    window.checkPassword = function() {
+        if(passwordInput.value === passwordCorrecta) {
+            localStorage.setItem("egolatras_auth", "true"); // guarda login
+            showContent();
+        } else {
+            alert("Contraseña incorrecta 😢");
+            passwordInput.value = "";
+        }
+    }
+
+    // Mostrar contenido si ya estaba logueado
+    if(localStorage.getItem("egolatras_auth") === "true") {
+        showContent();
+    }
+
+})();
+</script>
+
+</body>
+</html>
